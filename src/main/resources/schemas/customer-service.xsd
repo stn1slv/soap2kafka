@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://service.customer.com/types/v1"
+        xmlns:tns="http://service.customer.com/types/v1" elementFormDefault="qualified">
+    <xs:element name="createCustomerRequest" type="tns:CreateCustomerRequest" />
+    <xs:element name="createCustomerResponse" type="tns:CreateCustomerResponse" />
+    <xs:element name="createCustomerFault" type="tns:CreateCustomerFault" />
+    <xs:complexType name="CreateCustomerRequest">
+        <xs:sequence>
+            <xs:element name="customerName">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                        <xs:whiteSpace value="collapse" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="customerAge">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer" />
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="customerCity">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                        <xs:whiteSpace value="collapse" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="customerPhoneNumber">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                        <xs:whiteSpace value="collapse" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CreateCustomerResponse">
+        <xs:sequence>
+            <xs:element name="customerID" type="xs:integer" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CreateCustomerFault">
+        <xs:sequence>
+            <xs:element name="errorMessage" type="xs:normalizedString" />
+            <xs:element name="errorCode" type="xs:int" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

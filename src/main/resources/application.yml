@@ -1,0 +1,14 @@
+camel.springboot.main-run-controller: true
+
+adapter:
+#  wsdlURL: wsdl/customer-service.wsdl
+#  wsdlURL: https://raw.githubusercontent.com/monodot/camel-demos/master/simple-tests/src/main/resources/wsdl/BookService.wsdl
+  wsdlURL: wsdl/BookService.wsdl
+  kafka: kafka:9092
+  port: 8181
+  opsMapping:
+    AddBook: add-book
+    GetBook: get-book
+    GetAllBooks: get-all-books
+
+

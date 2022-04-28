@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:cs="http://service.customer.com/types/v1"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:tns="http://service.customer.com/v1"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="customer-service"
+        targetNamespace="http://service.customer.com/v1">
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import namespace="http://service.customer.com/types/v1" schemaLocation="../schemas/customer-service.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="createCustomerRequest">
+        <wsdl:part name="createCustomerRequest" element="cs:createCustomerRequest"/>
+    </wsdl:message>
+    <wsdl:message name="createCustomerResponse">
+        <wsdl:part name="createCustomerResponse" element="cs:createCustomerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="createCustomerFault">
+        <wsdl:part name="createCustomerFault" element="cs:createCustomerFault"/>
+    </wsdl:message>
+    <wsdl:portType name="CustomerServicePort">
+        <wsdl:operation name="createCustomer">
+            <wsdl:input message="tns:createCustomerRequest" name="createCustomerRequest"/>
+            <wsdl:output message="tns:createCustomerResponse" name="createCustomerResponse"/>
+            <wsdl:fault message="tns:createCustomerFault" name="createCustomerFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CustomerServiceBinding" type="tns:CustomerServicePort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="createCustomer">
+            <soap:operation soapAction="createCustomer" style="document"/>
+            <wsdl:input name="createCustomerRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="createCustomerResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="createCustomerFault">
+                <soap:fault name="createCustomerFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CustomerService">
+        <wsdl:port name="CustomerServicePort" binding="tns:CustomerServiceBinding">
+            <soap:address location="http://0.0.0.0:8181/customerservice"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
