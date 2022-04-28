@@ -27,7 +27,6 @@ public class Routes extends RouteBuilder {
                 .log("${header.operationName}")
                 .log("${header.operationNamespace}");
         buildOpsMapping(rd);
-        rd.to("kafka:input?brokers={{adapter.kafka}}");
         log.debug("RouteDefinition: "+rd.toString());
     }
 
