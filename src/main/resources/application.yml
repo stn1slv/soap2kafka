@@ -1,14 +1,16 @@
 camel.springboot.main-run-controller: true
 
 adapter:
+#  wsdlURL: https://raw.githubusercontent.com/stn1slv/soap2kafka/main/src/main/resources/wsdl/customer-service.wsdl
+  wsdlURL: https://raw.githubusercontent.com/stn1slv/soap2kafka/main/src/main/resources/wsdl/BookService.wsdl
 #  wsdlURL: wsdl/customer-service.wsdl
-#  wsdlURL: https://raw.githubusercontent.com/monodot/camel-demos/master/simple-tests/src/main/resources/wsdl/BookService.wsdl
-  wsdlURL: wsdl/BookService.wsdl
+#  wsdlURL: wsdl/BookService.wsdl
   kafka: kafka:9092
   port: 8181
   opsMapping:
-    AddBook: add-book
-    GetBook: get-book
-    GetAllBooks: get-all-books
+    AddBook: add-book           #For BookService WSDL
+    GetBook: get-book           #For BookService WSDL
+    GetAllBooks: get-all-books  #For BookService WSDL
+#    createCustomer: create-customer #For Customer-service WSDL
 
 
